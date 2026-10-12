@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0c0d15" />
+<meta name="description" content="Lura — an interactive LED blush hat concept simulator." />
+<title>Lura Studio · Light your expression</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#f6f3ff;background:#090a11;font-synthesis:none}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 78% -10%,#302248 0,transparent 42%),#0a0b12}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #cc9bff;outline-offset:4px}button:disabled{opacity:.45;cursor:not-allowed}.app{max-width:1510px;margin:auto;padding:22px clamp(16px,3vw,46px) 45px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:4px 0 25px}.brand{display:flex;align-items:center;gap:13px}.mark{display:grid;place-items:center;width:44px;height:44px;border:1px solid #9363c7;border-radius:15px;background:linear-gradient(135deg,#ab67e5,#ea82b4);color:white;font-size:26px;font-weight:750;box-shadow:0 4px 35px #d57eff45}.brandname{font-size:22px;letter-spacing:-.7px;font-weight:750}.brandname span{font-size:11px;font-weight:650;color:#c2abc9;letter-spacing:2px;margin-left:8px}.topright{color:#9693a6;font-size:12px;letter-spacing:.03em;display:flex;align-items:center;gap:9px}.statusdot{width:7px;height:7px;background:#a9ecbe;border-radius:100%;box-shadow:0 0 12px #9af6a5}.main{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(305px,.9fr);gap:22px;align-items:start}.panel{border:1px solid #ffffff17;border-radius:23px;background:linear-gradient(150deg,#1a1926fa,#14141efa);box-shadow:0 18px 65px #0004;overflow:hidden}.viewpanel{padding:20px}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#ac95c8;font-weight:760}.titleline{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:8px 0 20px}.titleline h1{font-size:clamp(22px,2.4vw,32px);line-height:1.13;letter-spacing:-1.2px;margin:0;font-weight:680}.smallpill{font-size:11px;border:1px solid #ffffff24;background:#ffffff0c;border-radius:999px;padding:8px 11px;color:#c5bfd2;white-space:nowrap}.tabs{display:flex;gap:7px;padding:5px;background:#0d0d17;border-radius:13px;margin-bottom:16px}.tabs button{flex:1;color:#9994a9;border:0;border-radius:10px;background:transparent;padding:12px 9px;font-size:13px;font-weight:650;transition:background .2s}.tabs button.active{background:#31263f;color:#f9e6ff;box-shadow:inset 0 0 0 1px #bb82de45}.preview{position:relative;overflow:hidden;aspect-ratio:1.17/1;border-radius:17px;background:#1f1a2a;isolation:isolate}.preview video,.preview canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.preview video{z-index:1;transform:scaleX(-1)}.preview canvas{z-index:2;touch-action:none}.preview .demo{position:absolute;inset:0;width:100%;height:100%;z-index:0}.preview[data-mode="pov"] video{transform:none}.preview .previewBadge{position:absolute;z-index:3;left:14px;top:14px;background:#0c0c16ad;backdrop-filter:blur(9px);border:1px solid #ffffff24;color:#f2deff;font-size:11px;padding:9px 11px;border-radius:999px}.preview .corner{position:absolute;z-index:3;right:14px;top:14px;background:#0c0c16ad;color:#dad0e3;border:1px solid #ffffff24;border-radius:999px;padding:9px 11px;font-size:11px}.preview .hint{position:absolute;z-index:3;bottom:15px;left:50%;transform:translateX(-50%);width:max-content;max-width:90%;text-align:center;background:#0c0c17bb;border:1px solid #ffffff22;border-radius:999px;padding:8px 12px;color:#d3c7db;font-size:11px}.previewfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:15px;flex-wrap:wrap}.actions{display:flex;gap:9px;flex-wrap:wrap}.btn{border:1px solid #ffffff27;border-radius:11px;padding:11px 15px;background:#ffffff0b;color:#eae3f0;font-size:12px;font-weight:700;transition:transform .15s,background .15s}.btn:hover:not(:disabled){transform:translateY(-1px);background:#ffffff18}.primary{border-color:#d5a0ed55;background:linear-gradient(135deg,#b77af1,#ec88bb);color:#1a1022}.primary:hover:not(:disabled){background:linear-gradient(135deg,#c58df8,#f097c7)}.helptext{font-size:11px;color:#9e96ab;line-height:1.5;margin:0}.side{padding:23px}.side h2{font-size:22px;letter-spacing:-.7px;margin:6px 0 6px}.side p.desc{font-size:12px;color:#aaa2b9;line-height:1.6;margin:0 0 22px}.sectiontop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 13px}.sectiontitle{font-size:11px;font-weight:800;letter-spacing:1.5px;color:#aaa0b9;text-transform:uppercase}.textbutton{border:0;background:transparent;color:#d3a0ec;font-size:12px;font-weight:700;padding:5px}.presets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.preset{min-height:65px;border-radius:13px;background:#ffffff07;border:1px solid #ffffff19;color:#dcd4e5;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;font-size:11px;font-weight:650}.preset.selected{border-color:#ca8cf8;background:#9a6bc01b}.swatch{width:13px;height:13px;border-radius:50%;box-shadow:0 0 12px currentColor}.divider{height:1px;background:#ffffff19;margin:22px 0}.sliderr{margin:0 0 19px}.sliderhead{display:flex;justify-content:space-between;gap:10px;margin-bottom:9px}.sliderhead label{font-size:12px;color:#e8e1ef;font-weight:650}.sliderhead output{font-variant-numeric:tabular-nums;font-size:12px;color:#b8a5cc}.slider{display:block;appearance:none;-webkit-appearance:none;width:100%;height:5px;border-radius:99px;outline:0;background:linear-gradient(90deg,#aa74e8 var(--fill,50%),#3b3548 var(--fill,50%));cursor:pointer}.slider::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;border:3px solid #f3eaff;background:#c790e9;border-radius:50%;box-shadow:0 2px 8px #0008}.slider::-moz-range-thumb{width:12px;height:12px;border:3px solid #f3eaff;background:#c790e9;border-radius:50%}.hue{background:linear-gradient(90deg,red,#ff0,lime,cyan,blue,magenta,red)}.minihelp{font-size:11px;color:#817b90;line-height:1.5;margin-top:-11px;margin-bottom:17px}.checkboxline{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#ddd4ea;font-size:12px;font-weight:650}.toggle{width:42px;height:25px;border-radius:99px;border:1px solid #ffffff30;background:#363141;padding:3px;display:flex;align-items:center}.toggle:after{content:"";width:17px;height:17px;border-radius:100%;background:#e5d7ed;transition:transform .2s}.toggle[aria-pressed=true]{background:#9b60c6}.toggle[aria-pressed=true]:after{transform:translateX(17px);background:white}.note{margin-top:14px;padding:14px 15px;border:1px solid #ffffff13;background:#ffffff08;border-radius:13px;font-size:11px;line-height:1.6;color:#9f96ac}.foot{color:#706b7e;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;margin-top:22px}.hidden{display:none!important}@media(max-width:910px){.main{grid-template-columns:minmax(0,1fr)}.preview{aspect-ratio:1.25/1}.side{padding:20px}}@media(max-width:520px){.app{padding:13px 12px 32px}.topbar{padding-bottom:14px}.brandname{font-size:20px}.brandname span{display:none}.topright{font-size:10px}.viewpanel{padding:13px}.titleline h1{font-size:23px}.titleline{margin-bottom:15px}.preview{aspect-ratio: .85/1}.tabs button{font-size:11px;padding:11px 6px}.previewfoot{align-items:stretch}.actions{width:100%}.actions .btn{flex:1}.helptext{font-size:10px}.side{padding:19px}.foot{line-height:1.5}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* V2 · Hat reveal / anchored illumination */
+.hatSelector{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 2px 13px;flex-wrap:wrap}
+.hatHeading{font-size:10px;letter-spacing:1.4px;color:#a89ab8;font-weight:800}
+.hatSegment{display:flex;padding:4px;gap:4px;background:#090a13;border:1px solid #ffffff18;border-radius:13px}
+.hatOption{border:0;background:transparent;border-radius:9px;color:#aaa1b6;padding:10px 14px;font-size:12px;font-weight:720;transition:background .15s,color .15s;white-space:nowrap}
+.hatOption.active{background:linear-gradient(135deg,#b379eb,#ee98c5);color:#1c1026;box-shadow:0 3px 12px #c285f129}
+.preview .hint{pointer-events:none}
+.preview .previewBadge,.preview .corner{pointer-events:none}
+.utilityBar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 2px 13px;flex-wrap:wrap}.utilityGroup{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.utilityLabel{font-size:10px;letter-spacing:1.4px;color:#a89ab8;font-weight:800}.compareDivider{position:absolute;inset:0 auto 0 50%;width:2px;transform:translateX(-1px);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.7),rgba(255,255,255,.08));z-index:4;pointer-events:none}.compareTag{position:absolute;z-index:5;top:52px;padding:7px 10px;border-radius:999px;background:#0c0c16c2;border:1px solid #ffffff24;font-size:11px;color:#ece4f7;backdrop-filter:blur(8px);pointer-events:none}.compareTag.left{left:14px}.compareTag.right{right:14px}.unitHint{font-size:11px;color:#9b93a8;line-height:1.45;margin-top:10px}.preview[data-compare=true] .hint{bottom:14px}
+@media(max-width:910px){.viewpanel{position:sticky;top:8px;z-index:6}.preview{aspect-ratio:1.05/1;max-height:420px}}
+@media(max-width:520px){.hatSelector,.utilityBar{gap:9px}.hatHeading,.utilityLabel{font-size:9px}.hatOption{padding:9px 11px;font-size:11px}.hatSegment{flex:1;justify-content:stretch;flex-wrap:wrap}.hatOption{flex:1}.viewpanel{top:6px}.preview{aspect-ratio:1/1;max-height:min(42vh,280px)}.compareTag{top:48px;font-size:10px;padding:6px 9px}}
+
+
+/* V3: the video is composited into the rendering canvas, so light can blend
+   with actual skin pixels using soft-light and screen instead of alpha circles. */
+.preview video:not(.hidden){opacity:0;pointer-events:none}
+.preview canvas{z-index:2;object-fit:fill}
+.preview .demo{pointer-events:none}
+.hatOption{min-width:100px}
+#hint{transition:background .2s}
+</style>
+</head>
+<body>
+<div class="app"><header class="topbar"><div class="brand"><div class="mark">L</div><div class="brandname">lura <span>LIGHT STUDIO</span></div></div><div class="topright"><span class="statusdot"></span> CONCEPT SIMULATOR · V3.1</div></header>
+<main class="main"><section class="panel viewpanel"><div class="eyebrow">Live experience</div><div class="titleline"><h1>See the glow come alive.</h1><span class="smallpill" id="modepill">Third-person view</span></div><div class="tabs" role="group" aria-label="View mode"><button id="thirdTab" class="active" aria-pressed="true">✦ Third person · Face view</button><button id="firstTab" aria-pressed="false">◉ First person · Wearer view</button></div><div class="hatSelector" id="hatSelector"><span class="hatHeading">HAT PREVIEW</span><div class="hatSegment" role="group" aria-label="Show hat"><button id="withoutHat" class="hatOption active" aria-pressed="true">Hide hat</button><button id="withHat" class="hatOption" aria-pressed="false">Show 3D hat</button></div></div><div class="utilityBar"><div class="utilityGroup"><span class="utilityLabel">COMPARE</span><div class="hatSegment" role="group" aria-label="Before and after comparison"><button id="singleView" class="hatOption active" aria-pressed="true">Single view</button><button id="sideBySideView" class="hatOption" aria-pressed="false">Before / After</button></div></div><div class="utilityGroup"><span class="utilityLabel">UNITS</span><div class="hatSegment" role="group" aria-label="Units mode"><button id="simpleUnits" class="hatOption active" aria-pressed="true">Simple %</button><button id="realUnits" class="hatOption" aria-pressed="false">Real units</button></div></div></div><div class="preview" id="preview" data-mode="face" data-compare="false"><svg class="demo" id="demoFace" viewBox="0 0 800 680" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><radialGradient id="bg"><stop stop-color="#51415c"/><stop offset="1" stop-color="#171827"/></radialGradient><linearGradient id="skin" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ecbca9"/><stop offset=".55" stop-color="#db9f90"/><stop offset="1" stop-color="#af716d"/></linearGradient><linearGradient id="cap" x1="0" x2="1"><stop stop-color="#38303e"/><stop offset=".5" stop-color="#5c475b"/><stop offset="1" stop-color="#36303e"/></linearGradient></defs><path fill="url(#bg)" d="M0 0h800v680H0z"/><ellipse cx="400" cy="742" rx="305" ry="223" fill="#88839a"/><path d="M245 660L282 533 354 504h95l75 42 41 114" fill="#c3b9c9"/><path d="M353 461h92v104c-18 33-80 34-92 0z" fill="url(#skin)"/><ellipse cx="270" cy="326" rx="23" ry="39" fill="#b77e77"/><ellipse cx="529" cy="326" rx="23" ry="39" fill="#b77e77"/><path d="M273 221q5-131 128-127 130 0 129 127v155q-15 118-130 145-118-27-129-145z" fill="url(#skin)"/><path d="M268 294q-31-187 125-196 153-14 144 196l-19-32q-27-43-30-91-34 67-203 79z" fill="#292333"/><path d="M303 317q29-20 62 0M437 317q29-20 60 0" stroke="#49333a" stroke-width="9" fill="none" stroke-linecap="round"/><ellipse cx="340" cy="322" rx="6" ry="7" fill="#242131"/><ellipse cx="463" cy="322" rx="6" ry="7" fill="#242131"/><path d="M401 329l-8 56q9 10 21 0" fill="none" stroke="#a9706c" stroke-width="5" stroke-linecap="round"/><path d="M365 421q35 23 71 0" fill="none" stroke="#914d62" stroke-width="5" stroke-linecap="round"/></svg><svg class="demo hidden" id="demoPov" viewBox="0 0 800 680" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6c668e"/><stop offset=".65" stop-color="#c5a9c6"/><stop offset="1" stop-color="#e2b7b3"/></linearGradient><linearGradient id="road" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#555467"/><stop offset="1" stop-color="#191f2f"/></linearGradient></defs><rect width="800" height="680" fill="url(#sky)"/><circle cx="625" cy="190" r="62" fill="#f3d2c3" opacity=".7"/><path d="M0 360 169 230 280 356v140H0z" fill="#37394b"/><path d="M0 385 101 323l140 97v125H0z" fill="#5d5364"/><path d="M800 365 620 238 514 359v142h286z" fill="#37394b"/><path d="M800 400 694 320 572 412v130h228z" fill="#5d5364"/><path d="M0 500h800v180H0z" fill="#49495b"/><path d="M300 435h200l275 245H25z" fill="url(#road)"/><path d="M399 460l-8 43h16zM383 563l-18 56h72l-18-56z" fill="#b8aeb3"/><path d="M0 490h800" stroke="#cfb8be" stroke-width="9" opacity=".5"/></svg><video id="camera" autoplay playsinline muted class="hidden" aria-label="Live camera preview"></video><canvas id="glow" aria-label="Live camera with tracked, diffuse light and three-dimensional hat"></canvas><span class="previewBadge" id="livebadge">✦ DEMO PREVIEW</span><span class="corner" id="cornerLabel">HAT / HIDDEN</span><div class="hint" id="hint">Illustration demo · Enable camera for a live preview</div><div class="compareDivider hidden" id="compareDivider"></div><span class="compareTag left hidden" id="compareLeft">Before</span><span class="compareTag right hidden" id="compareRight">After</span></div><div class="previewfoot"><div class="actions"><button class="btn primary" id="cameraBtn">◎ Enable camera</button><button class="btn" id="snapshotBtn">↓ Save snapshot</button><button class="btn hidden" id="retryTrackingBtn" title="Retry only face tracking without restarting the camera">↻ Retry tracking</button></div><p class="helptext" id="cameraInfo">Camera is optional. Everything runs in your browser.</p></div></section>
+<aside class="panel side"><div class="eyebrow">Make it yours</div><h2>Light controls</h2><p class="desc">Fine-tune your Lura hat's simulated light with real-time changes, compare before and after, and switch between simple percentages and approximate real-world values.</p><div class="sectiontop"><span class="sectiontitle">Quick looks</span><button id="resetBtn" class="textbutton">Reset all ↺</button></div><div class="presets" id="presets"><button class="preset" data-preset="rose"><span class="swatch" style="background:#ff719f;color:#ff719f"></span>Rose blush</button><button class="preset" data-preset="peach"><span class="swatch" style="background:#ffae7e;color:#ffae7e"></span>Peach glow</button><button class="preset" data-preset="violet"><span class="swatch" style="background:#b28aff;color:#b28aff"></span>Lavender</button><button class="preset" data-preset="aqua"><span class="swatch" style="background:#72e2ef;color:#72e2ef"></span>Ice blue</button><button class="preset" data-preset="sunset"><span class="swatch" style="background:#ff7c58;color:#ff7c58"></span>Sunset</button><button class="preset" data-preset="custom"><span class="swatch" style="background:conic-gradient(red,yellow,lime,cyan,blue,magenta,red);color:#fff"></span>Custom</button></div><div class="divider"></div><div class="sectiontop"><span class="sectiontitle">Appearance</span><span class="eyebrow" id="activeLook">ROSE BLUSH</span></div><div id="sliders"></div><div class="unitHint" id="unitHint">Simple mode shows easy percentages. Switch to Real units to see approximate RGB color, lumens, centimeters, and degrees.</div><div class="divider"></div><div class="checkboxline"><span>Breathing animation</span><button id="animateBtn" class="toggle" role="switch" aria-label="Breathing animation" aria-pressed="false"></button></div><div class="note">In third-person view, Lura uses face landmarks to follow your cheeks and preview LEDs angled downward from the brim. Toggle a realistic black cap preview without disabling the light. Before / After mode compares the raw camera with the simulated result. Real units are approximate conversions for concept testing, not exact measured photometrics.</div></aside></main><footer class="foot"><span>© Lura Studio · Concept visualization</span><span>Camera images stay in your browser. No uploads or accounts.</span></footer></div>
+<script>
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const preview=$('preview'), canvas=$('glow'), ctx=canvas.getContext('2d',{alpha:false}), video=$('camera');
+const mobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||((navigator.maxTouchPoints||0)>1&&/Macintosh/i.test(navigator.userAgent));
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const pt=(x,y)=>({x,y});
+const midpoint=(a,b)=>pt((a.x+b.x)/2,(a.y+b.y)/2);
+const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+const defaults={hue:343,saturation:82,brightness:70,size:72,softness:89,gap:70,vertical:66,ambient:47,hatScale:100,hatTilt:7,speed:30};
+const presets={rose:{...defaults},peach:{...defaults,hue:19,saturation:64,brightness:53},violet:{...defaults,hue:275,saturation:65,brightness:51},aqua:{...defaults,hue:186,saturation:62,brightness:58},sunset:{...defaults,hue:8,saturation:81,brightness:65,ambient:63},custom:{...defaults}};
+const config=[
+ ['hue','Hue',0,360,'°'],['saturation','Saturation',0,100,'%'],['brightness','LED intensity',0,100,'%'],
+ ['size','Face coverage',10,100,'%'],['softness','Edge feathering',0,100,'%'],['gap','Light width',20,100,'%'],
+ ['vertical','Downward reach',10,100,'%'],['ambient','Light diffusion',0,100,'%'],
+ ['hatScale','Hat fit',70,135,'%'],['hatTilt','Brim tilt',-20,30,'°'],['speed','Pulse speed',5,100,'%']
+];
+let settings={...defaults},chosen='rose',mode='face',hatVisible=true,animate=false,compareMode=false,unitsMode='simple';
+let stream=null,requestToken=0,tracker=null,trackerLoading=false,trackerError='',lastFrameVideoTime=-1;
+let trackedLandmarks=null,pose=null,lastFaceAt=0,lastDetectionAt=0,frameId=0,lastHint='';
+let sampleFaceImg=null,samplePovImg=null;
+let offscreen=null,light=null,mask=null,offscreenW=0,offscreenH=0;
+let lastFrameAt=0;
+const sliders=$('sliders');
+for(const [key,label,min,max,unit] of config){
+ const wrap=document.createElement('div');wrap.className='sliderr';
+ wrap.innerHTML=`<div class="sliderhead"><label for="${key}">${label}</label><output id="${key}Value"></output></div><input class="slider${key==='hue'?' hue':''}" id="${key}" type="range" min="${min}" max="${max}" value="${settings[key]}" step="1" aria-label="${label}">`;
+ sliders.append(wrap);
+ $(key).addEventListener('input',()=>{settings[key]=Number($(key).value);chosen='custom';sync();});
+}
+
+function hslToRgb(h,s,l){
+ h=((h%360)+360)%360;s/=100;l/=100;
+ const c=(1-Math.abs(2*l-1))*s,x=c*(1-Math.abs((h/60)%2-1)),m=l-c/2;
+ let r=0,g=0,b=0;
+ if(h<60)[r,g,b]=[c,x,0]; else if(h<120)[r,g,b]=[x,c,0]; else if(h<180)[r,g,b]=[0,c,x]; else if(h<240)[r,g,b]=[0,x,c]; else if(h<300)[r,g,b]=[x,0,c]; else [r,g,b]=[c,0,x];
+ return [r,g,b].map(v=>Math.round((v+m)*255));
+}
+function fmtValue(key,val){
+ if(unitsMode==='simple'){
+  const meta=config.find(x=>x[0]===key); return val+(meta?meta[4]:'');
+ }
+ const [r,g,b]=hslToRgb(settings.hue,settings.saturation,50+settings.brightness*0.2);
+ const map={
+  hue:`RGB ${r}, ${g}, ${b}`,
+  saturation:`${val}% sat`,
+  brightness:`${Math.round(40+val*7.6)} lm`,
+  size:`${(8+val*0.22).toFixed(1)} cm span`,
+  softness:`${(1.5+val*0.09).toFixed(1)} cm feather`,
+  gap:`${(6+val*0.18).toFixed(1)} cm width`,
+  vertical:`${(4+val*0.22).toFixed(1)} cm drop`,
+  ambient:`${(10+val*0.8).toFixed(0)}° spread`,
+  hatScale:`${(50+val*0.08).toFixed(1)} cm fit`,
+  hatTilt:`${val}°`,
+  speed:`${(0.2+val*0.018).toFixed(1)} Hz`
+ };
+ return map[key]||String(val);
+}
+function setUnits(modeName){
+ unitsMode=modeName;
+ for(const [id,on] of [['simpleUnits',modeName==='simple'],['realUnits',modeName==='real']]){const btn=$(id);btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',String(on));}
+ $('unitHint').textContent=modeName==='simple'?'Simple mode shows easy percentages. Switch to Real units to see approximate RGB color, lumens, centimeters, and degrees.':'Real units mode shows approximate concept values like RGB color, lumens, centimeters, and degrees. These are estimated design values, not sensor measurements.';
+ sync();
+}
+function setCompare(v){
+ compareMode=v;preview.dataset.compare=String(v);
+ for(const [id,on] of [['singleView',!v],['sideBySideView',v]]){const btn=$(id);btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',String(on));}
+ $('compareDivider').classList.toggle('hidden',!v);$('compareLeft').classList.toggle('hidden',!v);$('compareRight').classList.toggle('hidden',!v);
+ $('compareLeft').textContent='Before';$('compareRight').textContent=mode==='face'?'After':'With hat light';
+}
+
+
+function sync(){
+ for(const [key,,min,max,unit] of config){$(key).value=settings[key];$(key+'Value').textContent=fmtValue(key,settings[key]);$(key).style.setProperty('--fill',`${(settings[key]-min)/(max-min)*100}%`);}
+ for(const item of document.querySelectorAll('[data-preset]')){const on=item.dataset.preset===chosen;item.classList.toggle('selected',on);item.setAttribute('aria-pressed',String(on));}
+ $('activeLook').textContent=chosen==='custom'?'CUSTOM MIX':chosen==='rose'?'ROSE BLUSH':chosen.toUpperCase();
+}
+sync();
+$('presets').addEventListener('click',e=>{const btn=e.target.closest('[data-preset]');if(!btn)return;chosen=btn.dataset.preset;if(chosen!=='custom')settings={...presets[chosen]};sync();});
+$('resetBtn').addEventListener('click',()=>{chosen='rose';settings={...defaults};animate=false;$('animateBtn').setAttribute('aria-pressed','false');sync();});
+$('animateBtn').addEventListener('click',()=>{animate=!animate;$('animateBtn').setAttribute('aria-pressed',String(animate));});
+function setHat(v){hatVisible=v;for(const [id,on] of [['withoutHat',!v],['withHat',v]]){const btn=$(id);btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',String(on));}$('cornerLabel').textContent=v?'HAT / ON':'HAT / HIDDEN';}
+$('withHat').addEventListener('click',()=>setHat(true));$('withoutHat').addEventListener('click',()=>setHat(false));
+setHat(true);$('simpleUnits').addEventListener('click',()=>setUnits('simple'));$('realUnits').addEventListener('click',()=>setUnits('real'));setUnits('simple');$('singleView').addEventListener('click',()=>setCompare(false));$('sideBySideView').addEventListener('click',()=>setCompare(true));setCompare(false);
+function setMode(v){if(v===mode)return;mode=v;preview.dataset.mode=v;for(const [id,on] of [['thirdTab',v==='face'],['firstTab',v==='pov']]){$(id).classList.toggle('active',on);$(id).setAttribute('aria-pressed',String(on));}
+ $('modepill').textContent=v==='face'?'Third-person view':'Wearer view';$('hatSelector').classList.toggle('hidden',v!=='face');
+ $('demoFace').classList.toggle('hidden',v!=='face');$('demoPov').classList.toggle('hidden',v!=='pov');trackedLandmarks=null;pose=null;
+ setCompare(compareMode);
+ if(stream)startCamera();else updateHint();
+}
+$('thirdTab').addEventListener('click',()=>setMode('face'));
+$('firstTab').addEventListener('click',()=>setMode('pov'));
+function setHint(txt){if(txt!==lastHint){$('hint').textContent=txt;lastHint=txt;}}
+function updateHint(){
+ $('retryTrackingBtn').classList.toggle('hidden',!stream||mode!=='face'||(!trackerError&&!trackerLoading));
+ $('retryTrackingBtn').disabled=trackerLoading;
+ $('retryTrackingBtn').textContent=trackerLoading?'Loading tracker…':'↻ Retry tracking';
+ if(!stream){setHint(mode==='face'?'Demo mode · switch on your camera for tracked 3D fit':'Demo · enable the camera for first-person view');return;}
+ if(mode==='pov'){setHint(mobile?'Wearer view · camera scene with brim and down-facing LED spill':'Wearer view · inward camera with simulated brim and LED spill');return;}
+ if(trackedLandmarks&&performance.now()-lastFaceAt<1300){const p=pose||{yaw:0,pitch:0};setHint(`3D face lock · turn ${Math.round(p.yaw*180/Math.PI)}° · tilt ${Math.round(p.pitch*180/Math.PI)}°`);return;}
+ if(trackerLoading){setHint('Loading 3D face and head rotation tracking…');return;}
+ if(trackerError){setHint('Face tracker failed to load · tap Retry tracking below');return;}
+ setHint('Looking for your face · look toward the camera');
+}
+function stopCamera(){requestToken++;if(stream){stream.getTracks().forEach(x=>x.stop());stream=null;}video.pause();video.srcObject=null;video.classList.add('hidden');trackedLandmarks=null;pose=null;lastFrameVideoTime=-1;$('cameraBtn').textContent='◎ Enable camera';$('livebadge').textContent='✦ DEMO PREVIEW';updateHint();}
+function facing(){return mode==='pov'&&mobile?'environment':'user';}
+async function startCamera(){
+ stopCamera();const token=requestToken;
+ if(!navigator.mediaDevices?.getUserMedia){$('cameraInfo').textContent='Camera access requires localhost or HTTPS (such as GitHub Pages).';return;}
+ $('cameraBtn').disabled=true;$('cameraBtn').textContent='Connecting…';
+ try{
+  const s=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:facing()},width:{ideal:1280},height:{ideal:960}}});
+  if(token!==requestToken){s.getTracks().forEach(t=>t.stop());return;}
+  stream=s;video.srcObject=s;await video.play();if(token!==requestToken)return;
+  video.classList.remove('hidden');$('cameraBtn').textContent='□ Stop camera';$('livebadge').textContent='● LIVE CAMERA';
+  $('cameraInfo').textContent='Camera and face tracking process locally in your browser. The model is downloaded once.';
+  if(mode==='face')startTracking();updateHint();
+ }catch(e){if(token!==requestToken)return;$('cameraInfo').textContent='Camera failed: '+(e.name==='NotAllowedError'?'camera permission denied':e.name==='NotFoundError'?'no camera found':e.name==='NotReadableError'?'another app is using the camera':e.message);$('cameraBtn').textContent='◎ Enable camera';}
+ finally{if(token===requestToken)$('cameraBtn').disabled=false;}
+}
+$('cameraBtn').addEventListener('click',()=>{if(stream){stopCamera();$('cameraInfo').textContent='Camera is off. The illustration preview is active.';}else startCamera();});
+
+// Face Landmarker returns hundreds of 3D face points AND a 4x4 transformation
+// matrix. The matrix supplies yaw and pitch; eyes supply roll in screen space.
+// That means the visor follows head turns and nods instead of just face position.
+// MediaPipe assets need to come from the same *published* package version.
+// V3 used @0.10.22 (not a published stable version), so the CDN import failed.
+// Prefer the published release candidate, and try the prior stable release too.
+const FACE_MODEL_URL='https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task';
+const TRACKER_SOURCES=[
+ {version:'0.10.22-rc.20250304',base:'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.22-rc.20250304'},
+ {version:'0.10.21',base:'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.21'}
+];
+async function loadTrackerFrom(source){
+ // The package browser bundle has a default export in some CDN configurations.
+ // Try the CDN ESM adapter first and fall back to its official browser bundle.
+ let exports,importError;
+ for(const path of ['/+esm','/vision_bundle.mjs']){
+  try{
+   const m=await import(source.base+path);
+   const candidates=[m,m.default,m.default?.default].filter(Boolean);
+   exports=candidates.find(x=>x.FaceLandmarker?.createFromOptions&&x.FilesetResolver?.forVisionTasks);
+   if(exports)break;
+   importError=Error('MediaPipe loaded but the expected tracker API was not exported.');
+  }catch(e){importError=e;}
+ }
+ if(!exports)throw importError||Error('Face tracking library could not be imported');
+ const vision=await exports.FilesetResolver.forVisionTasks(source.base+'/wasm');
+ const options={
+  baseOptions:{modelAssetPath:FACE_MODEL_URL,delegate:'GPU'},
+  runningMode:'VIDEO',numFaces:1,
+  minFaceDetectionConfidence:.52,minFacePresenceConfidence:.52,minTrackingConfidence:.52,
+  outputFacialTransformationMatrixes:true,outputFaceBlendshapes:false
+ };
+ try{return await exports.FaceLandmarker.createFromOptions(vision,options);}
+ catch(gpuError){
+  // Intel Macs and Safari may not support the GPU delegate; CPU is safer.
+  options.baseOptions.delegate='CPU';
+  try{return await exports.FaceLandmarker.createFromOptions(vision,options);}
+  catch(cpuError){throw Error('Model initialization failed (GPU: '+(gpuError?.message||gpuError)+', CPU: '+(cpuError?.message||cpuError)+')');}
+ }
+}
+async function startTracking(){
+ if(tracker||trackerLoading||!stream||mode!=='face')return;
+ trackerLoading=true;trackerError='';updateHint();
+ const failures=[];
+ try{
+  for(let i=0;i<TRACKER_SOURCES.length;i++){
+   const source=TRACKER_SOURCES[i];
+   $('cameraInfo').textContent='Loading face tracking engine ('+(i+1)+'/'+TRACKER_SOURCES.length+')…';
+   try{
+    tracker=await loadTrackerFrom(source);
+    $('cameraInfo').textContent='Face tracker ready. Move or turn your head to see the hat follow. Camera images stay on your device.';
+    break;
+   }catch(e){failures.push(source.version+': '+(e?.message||String(e)));console.warn('Lura face tracker load failed:',source.version,e);}
+  }
+  if(!tracker)throw Error(failures.join(' | '));
+ }catch(e){
+  trackerError=String(e?.message||e);
+  $('cameraInfo').textContent='Camera works, but face tracking failed to load. This is a library/model download issue, not proof your Wi-Fi is down. Details: '+trackerError;
+ }finally{trackerLoading=false;updateHint();}
+}
+$('retryTrackingBtn').addEventListener('click',()=>{trackerError='';startTracking();});
+function updateTracking(t){
+ if(!stream||mode!=='face'||!tracker||video.readyState<2||t-lastDetectionAt<66||video.currentTime===lastFrameVideoTime)return;
+ lastDetectionAt=t;lastFrameVideoTime=video.currentTime;
+ try{
+  const results=tracker.detectForVideo(video,t),face=results.faceLandmarks?.[0];
+  if(!face?.length){if(t-lastFaceAt>550){trackedLandmarks=null;pose=null;}return;}
+  // The visual camera is mirrored for selfies. The 3D matrix comes from the
+  // non-mirrored video, so yaw changes sign to match the on-screen view.
+  const matrix=results.facialTransformationMatrixes?.[0]?.data;
+  const R=matrix&&matrix.length===16?matrix:null;
+  const newYaw=R?clamp(-Math.atan2(R[2],R[10]),-1.28,1.28):0;
+  const newPitch=R?clamp(Math.atan2(-R[6],Math.hypot(R[2],R[10])),-.85,.85):0;
+  // Lerp landmarks in normalized video coordinates to reduce cap edge jitter.
+  if(!trackedLandmarks||trackedLandmarks.length!==face.length){trackedLandmarks=face.map(p=>({...p}));}
+  else{const a=.48;for(let i=0;i<face.length;i++){let p=trackedLandmarks[i];p.x=lerp(p.x,face[i].x,a);p.y=lerp(p.y,face[i].y,a);p.z=lerp(p.z,face[i].z,a);}}
+  if(!pose)pose={yaw:newYaw,pitch:newPitch};
+  else{pose.yaw=lerp(pose.yaw,newYaw,.28);pose.pitch=lerp(pose.pitch,newPitch,.28);}
+  lastFaceAt=t;
+ }catch(e){if(t-lastFaceAt>1300){trackedLandmarks=null;pose=null;}}
+}
+function projectVideoPoint(p,w,h){
+ const vw=video.videoWidth||w,vh=video.videoHeight||h,scale=Math.max(w/vw,h/vh);
+ const px=p.x*vw*scale+(w-vw*scale)/2,py=p.y*vh*scale+(h-vh*scale)/2;
+ return pt(w-px,py);
+}
+function demoPoint(x,y,w,h){const scale=Math.max(w/800,h/680);return pt(x*scale+(w-800*scale)/2,y*scale+(h-680*scale)/2);}
+const FACE_OVAL=[10,338,297,332,284,251,389,356,454,323,361,288,397,365,379,378,400,377,152,148,176,149,150,136,172,58,132,93,234,127,162,21,54,103,67,109];
+function getFace(w,h,t){
+ if(stream&&mode==='face'){
+  if(!trackedLandmarks||t-lastFaceAt>1250)return null;
+  const P=i=>projectVideoPoint(trackedLandmarks[i],w,h);
+  const eyeL=P(33),eyeR=P(263),center=midpoint(P(234),P(454));
+  const sides=[P(234),P(454)].sort((a,b)=>a.x-b.x);
+  const eyePair=[eyeL,eyeR].sort((a,b)=>a.x-b.x);
+  const roll=Math.atan2(eyePair[1].y-eyePair[0].y,eyePair[1].x-eyePair[0].x);
+  return {center,width:distance(...sides),eye:midpoint(eyeL,eyeR),top:P(10),chin:P(152),nose:P(1),roll,yaw:pose?.yaw||0,pitch:pose?.pitch||0,
+    oval:FACE_OVAL.map(P),live:true};
+ }
+ if(stream)return null;
+ const P=(x,y)=>demoPoint(x,y,w,h),center=P(400,339);
+ return {center,width:distance(P(268,339),P(532,339)),eye:P(400,320),top:P(400,110),chin:P(400,512),nose:P(400,367),roll:0,yaw:0,pitch:0,
+  oval:[P(400,108),P(460,119),P(509,160),P(530,241),P(529,337),P(518,405),P(493,458),P(452,500),P(400,520),P(347,500),P(304,458),P(281,402),P(268,337),P(270,239),P(291,161),P(339,117)],live:false};
+}
+function getAssets(w,h){
+ if(w===offscreenW&&h===offscreenH)return;
+ offscreenW=w;offscreenH=h;
+ light=document.createElement('canvas');mask=document.createElement('canvas');
+ for(const c of [light,mask]){c.width=Math.max(1,Math.round(w));c.height=Math.max(1,Math.round(h));}
+}
+function photoOrDemo(w,h){
+ if(stream&&video.readyState>=2){
+  const vw=video.videoWidth,vh=video.videoHeight,scale=Math.max(w/vw,h/vh),dw=vw*scale,dh=vh*scale;
+  ctx.save();if(mode==='face'){ctx.translate(w,0);ctx.scale(-1,1);}ctx.drawImage(video,(w-dw)/2,(h-dh)/2,dw,dh);ctx.restore();return;
+ }
+ const img=mode==='face'?sampleFaceImg:samplePovImg;
+ if(img){const fit=Math.max(w/800,h/680);ctx.drawImage(img,(w-800*fit)/2,(h-680*fit)/2,800*fit,680*fit);}
+ else{ctx.fillStyle='#282334';ctx.fillRect(0,0,w,h);}
+}
+function bodyDiffuse(face,w,h,t){
+ const power=settings.brightness/100*(animate?(.86+.14*Math.sin(t*.001*(.4+settings.speed/35))):1);
+ if(power<=0)return;
+ const fc=light.getContext('2d'),mc=mask.getContext('2d');
+ fc.clearRect(0,0,w,h);mc.clearRect(0,0,w,h);
+ // Face-outline alpha mask softened at the edges. No illumination on the wall.
+ mc.save();mc.filter=`blur(${Math.max(2.5,face.width*(.012+settings.softness/600))}px)`;
+ mc.beginPath();face.oval.forEach((p,i)=>i?mc.lineTo(p.x,p.y):mc.moveTo(p.x,p.y));mc.closePath();mc.fillStyle='white';mc.fill();mc.restore();
+ const brim=pt(lerp(face.top.x,face.eye.x,.34),lerp(face.top.y,face.eye.y,.34));
+ fc.save();fc.translate(brim.x,brim.y);fc.rotate(face.roll);
+ const fw=face.width,reach=lerp(.70,1.58,settings.vertical/100);
+ const lightHeight=fw*reach;
+ const hue=settings.hue,sat=settings.saturation;
+ // A large, nearly flat field of downward incident light across the face.
+ // No ellipses, radial gradients, spots or peak points on the cheeks.
+ const g=fc.createLinearGradient(0,-fw*.14,0,lightHeight);
+ const weight=.49+settings.ambient/100*.15;
+ g.addColorStop(0,`hsla(${hue},${sat}%,${52+settings.ambient*.13}%,0)`);
+ g.addColorStop(.12,`hsla(${hue},${sat}%,${52+settings.ambient*.13}%,${weight*.84})`);
+ g.addColorStop(.30,`hsla(${hue},${sat}%,${52+settings.ambient*.13}%,${weight})`);
+ g.addColorStop(.50,`hsla(${hue},${sat}%,${50+settings.ambient*.13}%,${weight*.95})`);
+ g.addColorStop(.72,`hsla(${hue},${sat}%,${48+settings.ambient*.13}%,${weight*.58})`);
+ g.addColorStop(1,`hsla(${hue},${sat}%,${48+settings.ambient*.13}%,0)`);
+ fc.fillStyle=g;
+ const range=fw*(.40+settings.size/100*.51);
+ fc.fillRect(-range,-fw*.14,2*range,lightHeight+fw*.14);
+ // Wide lateral roll-off and yaw-aware exposure; softened continuously.
+ fc.globalCompositeOperation='destination-in';
+ const side=fc.createLinearGradient(-range,0,range,0);
+ const yawBias=face.yaw*.24,span=.22+settings.gap/100*.28;
+ side.addColorStop(0,'rgba(255,255,255,0)');
+ side.addColorStop(clamp(.5-span+yawBias,.08,.38),'rgba(255,255,255,.98)');
+ side.addColorStop(clamp(.5+span+yawBias,.62,.92),'rgba(255,255,255,.98)');
+ side.addColorStop(1,'rgba(255,255,255,0)');
+ fc.fillStyle=side;fc.fillRect(-range,-fw*.2,range*2,lightHeight+fw*.3);
+ fc.restore();
+ fc.save();fc.globalCompositeOperation='destination-in';fc.drawImage(mask,0,0);fc.restore();
+ // Color reacts to existing skin luminance and shadows, rather than covering
+ // it with a transparent graphic. Two gentle passes mimic diffuse reflected LED.
+ ctx.save();ctx.globalCompositeOperation='soft-light';ctx.globalAlpha=clamp(power*.97,0,1);ctx.drawImage(light,0,0,w,h);
+ ctx.globalCompositeOperation='screen';ctx.globalAlpha=clamp(power*(.31+settings.ambient/330),0,.5);ctx.drawImage(light,0,0,w,h);ctx.restore();
+}
+function drawBrimShadow(face){
+ if(!hatVisible)return;
+ const fw=face.width,brim=pt(lerp(face.top.x,face.eye.x,.34),lerp(face.top.y,face.eye.y,.34));
+ ctx.save();ctx.translate(brim.x,brim.y);ctx.rotate(face.roll);
+ const gr=ctx.createLinearGradient(0,-fw*.06,0,fw*.47);
+ gr.addColorStop(0,'rgba(10,9,17,.35)');gr.addColorStop(.22,'rgba(10,9,17,.23)');gr.addColorStop(1,'rgba(10,9,17,0)');
+ ctx.beginPath();ctx.moveTo(-fw*.52,0);ctx.quadraticCurveTo(0,fw*.035,fw*.52,0);ctx.lineTo(fw*.42,fw*.45);ctx.lineTo(-fw*.42,fw*.45);ctx.closePath();
+ ctx.fillStyle=gr;ctx.fill();ctx.restore();
+}
+// Projection of a lightweight 3D cap: the cap, seams, brim thickness and LEDs
+// all rotate in yaw, pitch and roll around the actual tracked forehead.
+function drawHat(face){
+ const W=face.width*settings.hatScale/100;
+ if(W<20)return;
+ const anchor=pt(lerp(face.top.x,face.eye.x,.32),lerp(face.top.y,face.eye.y,.32));
+ const yaw=face.yaw,pitch=face.pitch+settings.hatTilt*Math.PI/180,roll=face.roll;
+ const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch),cr=Math.cos(roll),sr=Math.sin(roll);
+ function P(x,y,z){
+  const xx=x*cy+z*sy,zz=z*cy-x*sy;
+  const yy=y*cp-zz*sp,depth=y*sp+zz*cp;
+  const perspective=clamp(1/(1-depth*.62),.63,1.58);
+  return pt(anchor.x+(xx*cr-yy*sr)*W*perspective,anchor.y+(xx*sr+yy*cr)*W*perspective);
+ }
+ const quad=(a,b,c,d)=>{ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.lineTo(c.x,c.y);ctx.lineTo(d.x,d.y);ctx.closePath();};
+ const samples=Array.from({length:33},(_,i)=>-1+i/16);
+ const crownTop=s=>P(.53*s,-.53+.20*s*s,.04+.055*(1-s*s));
+ const crownBottom=s=>P(.57*s,-.024+.043*s*s,.11+.058*(1-s*s));
+ const top=samples.map(crownTop),bottom=samples.map(crownBottom);
+ ctx.save();ctx.shadowColor='rgba(5,4,10,.38)';ctx.shadowBlur=W*.09;ctx.shadowOffsetY=W*.025;
+ ctx.beginPath();top.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));bottom.slice().reverse().forEach(p=>ctx.lineTo(p.x,p.y));ctx.closePath();
+ const topCenter=crownTop(0),lowerCenter=crownBottom(0),shade=ctx.createLinearGradient(topCenter.x-W*.42,topCenter.y-W*.30,lowerCenter.x+W*.35,lowerCenter.y+W*.1);
+ shade.addColorStop(0,'#4a4b4f');shade.addColorStop(.22,'#27292d');shade.addColorStop(.62,'#16181b');shade.addColorStop(1,'#090a0c');
+ ctx.fillStyle=shade;ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+ // Fabric side panels: tiny tonal changes mimic curved textile, not cartoon outlines.
+ for(const s of [-.53,.47]){
+  const a=crownTop(s),b=crownBottom(s),control=P(s*.48,-.31,.12);
+  ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.quadraticCurveTo(control.x,control.y,b.x,b.y);
+  ctx.lineWidth=Math.max(.8,W*.0038);ctx.strokeStyle='rgba(255,255,255,.13)';ctx.stroke();
+ }
+ const line=ctx.createLinearGradient(topCenter.x,topCenter.y,lowerCenter.x,lowerCenter.y);
+ line.addColorStop(0,'rgba(255,255,255,.22)');line.addColorStop(1,'rgba(255,255,255,.04)');
+ ctx.beginPath();ctx.moveTo(topCenter.x,topCenter.y);ctx.quadraticCurveTo(...Object.values(P(-.035,-.19,.16)),lowerCenter.x,lowerCenter.y);
+ ctx.lineWidth=Math.max(.8,W*.003);ctx.strokeStyle=line;ctx.stroke();
+ // Brim is a 3D front-projecting surface. Its front edge stays perspective-correct
+ // as the face turns, including when one side becomes visibly narrower.
+ const back=s=>P(.59*s,-.012+.026*s*s,.15+.016*(1-s*s));
+ const front=s=>P(.64*s,.080+.012*s*s,.24+.26*(1-s*s));
+ const frontLow=s=>P(.64*s,.099+.012*s*s,.24+.26*(1-s*s));
+ const rearPts=samples.map(back),frontPts=samples.map(front),edgePts=samples.map(frontLow);
+ const under=ctx.createLinearGradient(...Object.values(back(0)),...Object.values(frontLow(0)));
+ under.addColorStop(0,'#505257');under.addColorStop(.42,'#222428');under.addColorStop(1,'#090b0e');
+ ctx.beginPath();rearPts.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));frontPts.slice().reverse().forEach(p=>ctx.lineTo(p.x,p.y));ctx.closePath();ctx.fillStyle=under;ctx.fill();
+ ctx.beginPath();frontPts.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));edgePts.slice().reverse().forEach(p=>ctx.lineTo(p.x,p.y));ctx.closePath();ctx.fillStyle='#060708';ctx.fill();
+ ctx.beginPath();frontPts.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.strokeStyle='rgba(255,255,255,.16)';ctx.lineWidth=Math.max(.85,W*.004);ctx.stroke();
+ // Thin inset brim seam.
+ ctx.beginPath();samples.forEach((s,i)=>{const q=P(.624*s,.068+.01*s*s,.23+.236*(1-s*s));i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y);});ctx.lineWidth=Math.max(.7,W*.0024);ctx.strokeStyle='rgba(255,255,255,.13)';ctx.stroke();
+ // Top button and front seam make it look more like a realistic six-panel cap.
+ const topBtn=P(0,-.545,.06);ctx.beginPath();ctx.arc(topBtn.x,topBtn.y,Math.max(1.6,W*.016),0,Math.PI*2);ctx.fillStyle='rgba(220,220,220,.16)';ctx.fill();
+ // Subtle integrated LED strip is placed under brim: it always emits down.
+ const power=settings.brightness/100;
+ for(const side of [-1,1]){
+  const a=P(side*.225,.073,.351),b=P(side*.40,.080,.310);
+  ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+  ctx.lineWidth=Math.max(1.25,W*.015);ctx.lineCap='round';
+  ctx.strokeStyle=`hsla(${settings.hue},${settings.saturation}%,79%,${.15+.45*power})`;
+  ctx.shadowColor=`hsl(${settings.hue},${settings.saturation}%,65%)`;ctx.shadowBlur=W*.024*power;ctx.stroke();ctx.shadowBlur=0;
+ }
+ ctx.restore();
+}
+function drawPov(w,h,t){
+ const pulse=animate?(.86+.14*Math.sin(t*.001*(.4+settings.speed/35))):1;
+ const power=settings.brightness/100*pulse;
+ if(power<0.001)return;
+ const hue=settings.hue,sat=settings.saturation;
+ // Under-brim silhouette from the wearer's perspective.
+ ctx.save();
+ const brimGrad=ctx.createLinearGradient(0,0,0,h*.18);
+ brimGrad.addColorStop(0,'rgba(0,0,0,.96)');
+ brimGrad.addColorStop(.45,'rgba(6,7,8,.88)');
+ brimGrad.addColorStop(1,'rgba(6,7,8,0)');
+ ctx.fillStyle=brimGrad;
+ ctx.beginPath();
+ ctx.moveTo(w*.20,h*.03);
+ ctx.quadraticCurveTo(w*.50,-h*.03,w*.80,h*.03);
+ ctx.quadraticCurveTo(w*.72,h*.10,w*.50,h*.12);
+ ctx.quadraticCurveTo(w*.28,h*.10,w*.20,h*.03);
+ ctx.closePath();
+ ctx.fill();
+ // Soft downward spill from LED strips tucked beneath the brim.
+ const leftX=w*.32,rightX=w*.68,topY=h*.11,drop=h*(.26+settings.vertical/170),spread=w*(.14+settings.size/290);
+ for(const x of [leftX,rightX]){
+  const g=ctx.createRadialGradient(x,topY,0,x,topY+drop*.15,spread);
+  g.addColorStop(0,`hsla(${hue},${sat}%,72%,${power*.10})`);
+  g.addColorStop(.35,`hsla(${hue},${sat}%,66%,${power*.08})`);
+  g.addColorStop(1,`hsla(${hue},${sat}%,60%,0)`);
+  ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x,topY+drop*.18,spread*.95,drop,0,0,Math.PI*2);ctx.fill();
+ }
+ const wash=ctx.createLinearGradient(0,topY,0,h*.95),alpha=.05+power*.11;
+ wash.addColorStop(0,`hsla(${hue},${sat}%,68%,0)`);
+ wash.addColorStop(.12,`hsla(${hue},${sat}%,66%,${alpha*.65})`);
+ wash.addColorStop(.42,`hsla(${hue},${sat}%,62%,${alpha})`);
+ wash.addColorStop(.82,`hsla(${hue},${sat}%,58%,${alpha*.26})`);
+ wash.addColorStop(1,`hsla(${hue},${sat}%,56%,0)`);
+ ctx.globalCompositeOperation='screen';ctx.fillStyle=wash;ctx.fillRect(0,0,w,h);
+ ctx.restore();
+}
+function paint(t){
+ const bounds=preview.getBoundingClientRect(),w=bounds.width,h=bounds.height;
+ const dpr=Math.min(devicePixelRatio||1,mobile?1.4:2);
+ const CW=Math.round(w*dpr),CH=Math.round(h*dpr);
+ if(canvas.width!==CW||canvas.height!==CH){canvas.width=CW;canvas.height=CH;}
+ ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+ photoOrDemo(w,h);getAssets(w,h);
+ let face=null;
+ if(mode==='face'){updateTracking(t);face=getFace(w,h,t);}
+ const applyEffects=()=>{
+   if(mode==='face'){
+     if(face){bodyDiffuse(face,w,h,t);drawBrimShadow(face);if(hatVisible)drawHat(face);}
+   }else drawPov(w,h,t);
+ };
+ if(compareMode){
+   ctx.save();ctx.beginPath();ctx.rect(w/2,0,w/2,h);ctx.clip();applyEffects();ctx.restore();
+   // faint contrast wash on the after side so the split is easier to notice.
+   ctx.save();ctx.fillStyle='rgba(255,255,255,.02)';ctx.fillRect(w/2,0,w/2,h);ctx.restore();
+ }else applyEffects();
+ if(t-lastFrameAt>350){updateHint();lastFrameAt=t;}
+ frameId=requestAnimationFrame(paint);
+}
+function imageFromSVG(el){return new Promise((resolve,reject)=>{
+ const xml=new XMLSerializer().serializeToString(el);const blob=new Blob([xml],{type:'image/svg+xml;charset=utf-8'});const url=URL.createObjectURL(blob),img=new Image();
+ img.onload=()=>{URL.revokeObjectURL(url);resolve(img);};img.onerror=()=>{URL.revokeObjectURL(url);reject(Error('Cannot render illustration'));};img.src=url;
+});}
+imageFromSVG($('demoFace')).then(im=>sampleFaceImg=im).catch(()=>{});
+imageFromSVG($('demoPov')).then(im=>samplePovImg=im).catch(()=>{});
+$('snapshotBtn').addEventListener('click',()=>{
+ try{
+  const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download=`lura-${mode}-${hatVisible?'with-hat':'without-hat'}.png`;
+  document.body.append(a);a.click();a.remove();
+ }catch(e){$('cameraInfo').textContent='Could not capture this frame. Try again.';}
+});
+window.addEventListener('pagehide',()=>{stopCamera();cancelAnimationFrame(frameId);if(tracker?.close)tracker.close();});
+frameId=requestAnimationFrame(paint);
+})();
+</script>
+</body></html>
